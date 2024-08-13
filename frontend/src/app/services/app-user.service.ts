@@ -11,6 +11,7 @@ export class AppUserService {
   constructor(private httpClient: HttpClient) { }
 
   login(data: any) {
+    console.log(this.url + "/appUser/login");
     return this.httpClient.post(this.url + '/appUser/login', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
