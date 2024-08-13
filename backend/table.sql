@@ -9,3 +9,8 @@ create table appuser(
 );
 
 insert into appuser(name,email,password,status,isDeletable) values("Admin","admin@gmail.com","admin","true","false");
+
+create table category(
+    id int primary key AUTO_INCREMENT,
+    name varchar(255) NOT NULL
+);
