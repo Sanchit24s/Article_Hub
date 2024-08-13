@@ -14,3 +14,12 @@ create table category(
     id int primary key AUTO_INCREMENT,
     name varchar(255) NOT NULL
 );
+
+create table article(
+    id int primary key AUTO_INCREMENT,
+    title varchar(255) NOT NULL,
+    context LONGTEXT NOT NULL,
+    categoryId integer NOT NULL,
+    publication_date DATE,
+    status varchar(20)
+);
