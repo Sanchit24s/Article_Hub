@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { CategoryComponent } from './dialog/category/category.component';
+import { SharedModule } from '../shared/shared.module';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { CategoryComponent } from './dialog/category/category.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    QuillModule.forRoot(),
+    SharedModule
   ]
 })
 export class AdminModule { }

@@ -11,6 +11,8 @@ import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, SPINNER } from 'ngx
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { QuillModule } from 'ngx-quill';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
@@ -40,7 +42,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FlexLayoutModule,
     MaterialModule,
     HttpClientModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    QuillModule.forRoot(),
+    SharedModule
   ],
   providers: [HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -33,6 +33,9 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
+            "allowedCommonJsDependencies": [
+              "quill"
+            ],
             "scripts": []
           },
           "configurations": {
