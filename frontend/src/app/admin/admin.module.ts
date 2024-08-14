@@ -10,6 +10,8 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { UsersComponent } from './dialog/users/users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
+import { CategoryComponent } from './dialog/category/category.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HelpDetailsComponent,
     ConfirmationComponent,
     ManageUsersComponent,
-    UsersComponent
+    UsersComponent,
+    ManageCategoryComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,
