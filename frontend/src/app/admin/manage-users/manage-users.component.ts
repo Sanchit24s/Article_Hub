@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -7,6 +7,7 @@ import { AppUserService } from 'src/app/services/app-user.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
+import { UsersComponent } from '../dialog/users/users.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -56,10 +57,43 @@ export class ManageUsersComponent implements OnInit {
   }
 
   handleAddAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "Add"
+    };
 
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(UsersComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+
+    const res = dialogRef.componentInstance.onAddUser.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
-  handleEditAction(value: any) { }
+  handleEditAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "Edit",
+      data: values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(UsersComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+
+    const res = dialogRef.componentInstance.onEditUser.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
+  }
 
   onChange(status: any, id: any) {
     var data = {

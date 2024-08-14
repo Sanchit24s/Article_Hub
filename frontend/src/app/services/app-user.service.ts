@@ -17,7 +17,7 @@ export class AppUserService {
   }
 
   addNewAppUser(data: any) {
-    return this.httpClient.post(this.url + '/appUser/login', data, {
+    return this.httpClient.post(this.url + '/appUser/addNewAppUser', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
   }
