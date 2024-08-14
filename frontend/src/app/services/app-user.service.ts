@@ -11,8 +11,29 @@ export class AppUserService {
   constructor(private httpClient: HttpClient) { }
 
   login(data: any) {
-    console.log(this.url + "/appUser/login");
     return this.httpClient.post(this.url + '/appUser/login', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
+  }
+
+  addNewAppUser(data: any) {
+    return this.httpClient.post(this.url + '/appUser/login', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
+  }
+
+  getAllAppUser() {
+    return this.httpClient.get(this.url + "/appUser/getAllAppUser");
+  }
+
+  updateUser(data: any) {
+    return this.httpClient.post(this.url + '/appUser/updateUser', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
+  }
+
+  updateUserStatus(data: any) {
+    return this.httpClient.post(this.url + '/appUser/updateUserStatus', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
   }
