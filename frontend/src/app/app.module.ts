@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { QuillModule } from 'ngx-quill';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
@@ -31,7 +32,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ArticleDetailsComponent
   ],
   imports: [
     BrowserModule,
