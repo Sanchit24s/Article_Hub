@@ -9,6 +9,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
 import { ArticleComponent } from '../dialog/article/article.component';
+import { ViewArticleComponent } from '../dialog/view-article/view-article.component';
 
 @Component({
   selector: 'app-manage-article',
@@ -74,7 +75,19 @@ export class ManageArticleComponent implements OnInit {
     );
   }
 
-  handleViewAction(values: any) { }
+  handleViewAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "View",
+      data: values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(ViewArticleComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+  }
 
   handleEditAction(values: any) {
     const dialogConfig = new MatDialogConfig();
