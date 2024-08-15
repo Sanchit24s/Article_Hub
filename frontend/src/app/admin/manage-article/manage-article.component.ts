@@ -8,6 +8,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
+import { ArticleComponent } from '../dialog/article/article.component';
 
 @Component({
   selector: 'app-manage-article',
@@ -55,11 +56,44 @@ export class ManageArticleComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  handleAddAction() { }
+  handleAddAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "Add"
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(ArticleComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const res = dialogRef.componentInstance.onAddArticle.subscribe(
+      (response: any) => {
+        this.tableData();
+      }
+    );
+  }
 
   handleViewAction(values: any) { }
 
-  handleEditAction(values: any) { }
+  handleEditAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "Edit",
+      data: values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(ArticleComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const res = dialogRef.componentInstance.onEditArticle.subscribe(
+      (response: any) => {
+        this.tableData();
+      }
+    );
+  }
 
   onDelete(value: any) {
     const dialogConfig = new MatDialogConfig();
